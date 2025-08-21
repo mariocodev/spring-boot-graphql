@@ -214,6 +214,33 @@ mutation {
 
 ```
 
+Usando variables (recomendao)
+
+```graphql
+
+mutation MyMutation(
+  $genreIds: [ID!] = [3, 4], 
+  $actors: [String!] = ["Matthew McConaughey", "Anne Hathaway", "Jessica Chastain"]) {
+  createMovie(
+    movieInput: {
+      title: "Interstellar", 
+      directors: "Christopher Nolan", 
+      actors: $actors, 
+      genreIds: $genreIds
+    }
+  ) {
+    title
+    id
+    directors
+    actors
+    genres {
+      name
+    }
+  }
+}
+
+```
+
 
 ## 🖥 Acceso a la Consola H2
 
