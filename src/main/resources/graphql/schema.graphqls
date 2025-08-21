@@ -1,0 +1,30 @@
+type Query {
+    allMovies: [MovieResponse!]!
+    movieById(id: ID!): MovieResponse
+    moviesByGenre(genre: String!): [MovieResponse!]!
+}
+
+type Mutation {
+    createMovie(movieInput: MovieInput!): MovieResponse!
+}
+
+input MovieInput {
+    title: String!
+    directors: [String!]!
+    actors: [String!]!
+    genreIds: [ID!]!
+}
+
+type MovieResponse {
+    id: ID!
+    title: String!
+    directors: [String!]!
+    actors: [String!]!
+    genres: [GenreResponse!]!
+}
+
+type GenreResponse {
+    id: ID!
+    name: String!
+    description: String
+}
